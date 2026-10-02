@@ -1,0 +1,60 @@
+{
+  "name": "n8n-nodes-aster",
+  "version": "0.1.0",
+  "description": "Generate text with Aster Work",
+  "license": "MIT",
+  "keywords": [
+    "n8n-community-node-package"
+  ],
+  "author": {
+    "name": "VectorQ Lab",
+    "email": "ryan.nguyen@asterwise.dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nguyenkien1402/n8n-nodes-aster.git"
+  },
+  "scripts": {
+    "build": "n8n-node build",
+    "lint": "n8n-node lint",
+    "typecheck": "tsc --noEmit",
+    "test": "npm run build && node --test tests/*.test.cjs"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "examples",
+    "LICENSE",
+    "PUBLISHING.md",
+    "DEPENDENCY-REVIEW.md"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "strict": true,
+    "credentials": [
+      "dist/credentials/AsterApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/Aster/Aster.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@n8n/node-cli": "0.50.4",
+    "n8n-workflow": "2.28.0",
+    "typescript": "5.9.3"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  },
+  "homepage": "https://docs.asterwise.dev",
+  "bugs": {
+    "url": "https://github.com/nguyenkien1402/n8n-nodes-aster/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}

@@ -1,0 +1,39 @@
+name: Publish with provenance
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Exact package version to publish
+        required: true
+        type: string
+permissions:
+  contents: read
+  id-token: write
+concurrency:
+  group: npm-publish
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24'
+          registry-url: https://registry.npmjs.org
+          package-manager-cache: false
+      - name: Check requested version and OIDC-compatible npm
+        env:
+          EXPECTED_VERSION: ${{ inputs.version }}
+        run: |
+          node -e "if (require('./package.json').version !== process.env.EXPECTED_VERSION) process.exit(1)"
+          npm --version
+          node -e "const {execFileSync}=require('node:child_process'); const [major,minor]=execFileSync('npm',['--version'],{encoding:'utf8'}).trim().split('.').map(Number); if(major<11 || (major===11 && minor<5)) process.exit(1)"
+      - run: npm ci --ignore-scripts
+      - run: npm test
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm audit --omit=dev
+      - run: npm pack --dry-run
+      - run: npm publish --access public --provenance

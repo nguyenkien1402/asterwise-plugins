@@ -1,0 +1,26 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - run: npm ci --ignore-scripts
+      - run: npm test
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm audit --omit=dev
+      - run: npm pack --dry-run
+      - name: Install test-only HTTP interceptor
+        run: npm install --prefix "$RUNNER_TEMP/aster-mock-tools" --ignore-scripts --no-audit --no-fund nock@14.0.10
+      - name: Qualify actual n8n runtime with networking disabled
+        run: ASTER_MOCK_TOOLS="$RUNNER_TEMP/aster-mock-tools" bash scripts/runtime-test.sh
