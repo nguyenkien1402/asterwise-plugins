@@ -6,6 +6,14 @@ credential system. It is not yet published or verified by n8n.
 
 ## Install
 
+This package requires **Node.js 24 or later for consumers and development**
+(`engines.node: >=24`). For self-hosted n8n, the Node.js process running n8n must
+meet that requirement; when using Docker, check the runtime inside the image.
+The qualified host is n8n 2.41.6, which also declares Node.js >=24. Development
+checks ran on Node 24.21.0; the mocked workflow import/execution passed in the
+official n8n 2.41.6 image on Node 26.7.0. These checks do not qualify every n8n
+or Node.js version allowed by the minimum requirement.
+
 After publication, self-hosted n8n users can install `n8n-nodes-aster` in
 **Settings → Community Nodes**. n8n Cloud discovery requires n8n verification.
 For local evaluation, build and pack this repository, then install the tarball in
@@ -20,7 +28,6 @@ npm pack
 ```
 
 See [n8n private-node installation guidance](https://docs.n8n.io/connect/create-nodes/deploy-your-node/install-private-nodes/).
-Use Node 24 or later for development.
 
 ## Configure
 

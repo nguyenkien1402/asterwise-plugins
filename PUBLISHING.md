@@ -24,6 +24,12 @@ Before first publication:
    verification. Accept any new legal agreement only with explicit owner approval.
    Report submission separately from approval; no review date is promised.
 
+The package's Node.js >=24 requirement applies to consumers, including the
+self-hosted n8n process, as well as development. Retain `engines.node: >=24`;
+lower minimums require separate testing. Recorded qualification covers development
+on Node 24.21.0 and mocked n8n 2.41.6 execution on image Node 26.7.0, not every
+allowed runtime combination. The n8n 2.41.6 package itself declares Node.js >=24.
+
 CI and publication use Node 24, strict upstream lint and no runtime dependencies.
 The publish workflow grants OIDC only and stores no npm token. It is manually
 triggered to avoid accidental releases on ordinary source pushes.
