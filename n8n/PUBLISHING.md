@@ -7,22 +7,34 @@ Its npm repository metadata identifies that directory. Run package commands from
 `n8n/`; the GitHub workflows stay in the repository root `.github/workflows/`.
 Publication and n8n verification approval are separate outcomes.
 
-Before first publication:
+## Publication status
 
-1. Sign in to the intended npm maintainer account and confirm package ownership.
-   A new package cannot yet have a trusted-publisher setting; resolve npm's
-   first-publication/bootstrap flow with the maintainer. If it requires a granular
-   token, approve its exact package-only permissions and lifetime separately;
-   never send tokens in chat. Do not publish from a local terminal, because n8n
-   requires GitHub Actions provenance.
-2. Configure the npm trusted publisher for owner `nguyenkien1402`, repository
-   `asterwise-plugins`, workflow filename `publish.yml` (no environment), permitting
-   direct `npm publish`. This is a security-sensitive grant requiring owner approval.
-3. Confirm CI passes, review the exact tree and package contents, then manually run
-   **Publish with provenance** on `main` with version `0.1.0`.
-4. Verify the public registry version, tarball integrity and provenance attestation.
-   Run `npx @n8n/scan-community-package n8n-nodes-aster` against the published version.
-5. Sign in to https://creators.n8n.io/nodes and submit the npm package for
+The initial `0.1.0` release was published on 4 October 2026 from commit
+`97964fa58799e215e3871d650a3d6a2fdf942587` through
+[GitHub Actions](https://github.com/nguyenkien1402/asterwise-plugins/actions/runs/37175443435).
+npm registry signatures and provenance attestations were verified, and official
+`@n8n/scan-community-package@0.38.0` passed all security checks for that release.
+n8n Creator Portal submission and verification are separate steps.
+
+The npm maintainer is `ryan_asterwise`. The approved trusted publisher uses GitHub
+owner `nguyenkien1402`, repository `asterwise-plugins`, workflow `publish.yml`,
+without an environment. npm permits publishing and staged publishing for that
+configuration; independent dist-tag management is not granted. No npm token is
+stored in GitHub. npm account 2FA is enabled.
+
+Bootstrap used a temporary staged `0.0.0` candidate to create npm's public
+`0.0.0-stage` package record. That bootstrap candidate must not be approved as an
+integration release; actual versions are published by the provenance workflow.
+
+## Subsequent releases
+
+1. Update the package version and lockfile, then commit and push the reviewed
+   source. Confirm CI passes and review the package contents.
+2. Manually run **Publish with provenance** on `main`, using the exact new
+   manifest version. Do not publish the integration from a local terminal.
+3. Verify registry version, integrity and provenance, then run the official
+   community-package scanner against the published version.
+4. Sign in to https://creators.n8n.io/nodes and submit the npm package for
    verification. Accept any new legal agreement only with explicit owner approval.
    Report submission separately from approval; no review date is promised.
 

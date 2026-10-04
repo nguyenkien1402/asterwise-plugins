@@ -4,7 +4,7 @@ Public integrations for [AsterWise](https://asterwise.dev).
 
 | Integration | Source and setup | Package | Status |
 | --- | --- | --- | --- |
-| n8n | [Generate Text with Aster Work](n8n/README.md) | `n8n-nodes-aster` | Source available; npm publication and n8n verification pending |
+| n8n | [Generate Text with Aster Work](n8n/README.md) | `n8n-nodes-aster` | Published on npm; n8n verification pending |
 
 The n8n package requires Node.js 24 or later. Its source, tests, example workflow,
 package metadata and MIT license live in `n8n/`. GitHub workflows live in

@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-aster",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Generate text with Aster Work",
   "license": "MIT",
   "keywords": [

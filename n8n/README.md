@@ -2,7 +2,8 @@
 
 Generate text with [Aster Work](https://asterwise.dev) through one **Generate Text**
 action. This community package has no runtime dependencies and uses n8n's
-credential system. It is not yet published or verified by n8n.
+credential system. It is [published on npm](https://www.npmjs.com/package/n8n-nodes-aster);
+n8n verification is pending.
 
 ## Install
 
@@ -14,7 +15,7 @@ checks ran on Node 24.21.0; the mocked workflow import/execution passed in the
 official n8n 2.41.6 image on Node 26.7.0. These checks do not qualify every n8n
 or Node.js version allowed by the minimum requirement.
 
-After publication, self-hosted n8n users can install `n8n-nodes-aster` in
+Self-hosted n8n users can install `n8n-nodes-aster` in
 **Settings → Community Nodes**. n8n Cloud discovery requires n8n verification.
 For local evaluation, build and pack this repository, then install the tarball in
 your disposable n8n custom-node directory:
