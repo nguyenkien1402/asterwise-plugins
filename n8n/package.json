@@ -12,7 +12,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/nguyenkien1402/n8n-nodes-aster.git"
+    "url": "https://github.com/nguyenkien1402/asterwise-plugins.git",
+    "directory": "n8n"
   },
   "scripts": {
     "build": "n8n-node build",
@@ -48,7 +49,7 @@
   },
   "homepage": "https://docs.asterwise.dev",
   "bugs": {
-    "url": "https://github.com/nguyenkien1402/n8n-nodes-aster/issues"
+    "url": "https://github.com/nguyenkien1402/asterwise-plugins/issues"
   },
   "publishConfig": {
     "access": "public",

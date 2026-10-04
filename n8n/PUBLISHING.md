@@ -1,8 +1,10 @@
 # Publication
 
-Target repository: https://github.com/nguyenkien1402/n8n-nodes-aster
+Target repository: https://github.com/nguyenkien1402/asterwise-plugins
 Target npm package: `n8n-nodes-aster`, initially `0.1.0`.
-This repository contains only the MIT-licensed plugin and necessary tests/docs.
+The package source is in `n8n/` within this public integrations repository.
+Its npm repository metadata identifies that directory. Run package commands from
+`n8n/`; the GitHub workflows stay in the repository root `.github/workflows/`.
 Publication and n8n verification approval are separate outcomes.
 
 Before first publication:
@@ -14,7 +16,7 @@ Before first publication:
    never send tokens in chat. Do not publish from a local terminal, because n8n
    requires GitHub Actions provenance.
 2. Configure the npm trusted publisher for owner `nguyenkien1402`, repository
-   `n8n-nodes-aster`, workflow filename `publish.yml` (no environment), permitting
+   `asterwise-plugins`, workflow filename `publish.yml` (no environment), permitting
    direct `npm publish`. This is a security-sensitive grant requiring owner approval.
 3. Confirm CI passes, review the exact tree and package contents, then manually run
    **Publish with provenance** on `main` with version `0.1.0`.

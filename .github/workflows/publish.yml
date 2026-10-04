@@ -12,6 +12,9 @@ permissions:
 concurrency:
   group: npm-publish
   cancel-in-progress: false
+defaults:
+  run:
+    working-directory: n8n
 jobs:
   publish:
     if: github.ref == 'refs/heads/main'
